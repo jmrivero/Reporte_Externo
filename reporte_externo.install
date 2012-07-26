@@ -1,0 +1,68 @@
+<?php
+/* $Id: reporte_externo.info,v 1.0 2012/05/16 09:27:00 jmrivero Exp $*/
+
+
+function reporte_externo_install() {
+  drupal_install_schema('reporte_externo');
+}
+
+function reporte_externo_uninstall() {
+  drupal_uninstall_schema('reporte_externo');
+}
+
+/**
+* Implementation of hook_install()
+ * vid, nid, re_servidor, re_basedatos, re_usuario, re_password, re_dbtipo
+*/
+function reporte_externo_schema() {
+  $schema['reporte_externo'] = array(
+    'fields' => array(
+      'vid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      're_servidor' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      're_basedatos' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+        're_usuario' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+        're_password' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+        're_dbtipo' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('vid', 'nid'),
+  );
+
+  return $schema;
+}
+?>
